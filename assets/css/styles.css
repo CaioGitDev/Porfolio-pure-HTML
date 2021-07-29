@@ -287,7 +287,7 @@ img {
   margin-bottom: var(--mb-2);
 }
 .home__scroll {
-  /* display: none; */
+  display: none;
 }
 .home__scroll-button {
   color: var(--first-color);
@@ -325,16 +325,65 @@ img {
   margin-left: var(--mb-0-5);
   transition: .3s;
 }
-.button-flex {
+.button--flex {
   display: inline-flex;
   align-items: center;
 }
 /*==================== ABOUT ====================*/
+.about__container {
 
+}
+.about__img {
+  width: 200px;
+  border-radius: .5rem;
+  justify-self: center;
+  align-self: center;
+}
+.about__data {
+
+}
+.about__description {
+  text-align: center;
+  margin-bottom: var(--mb-2-5);
+}
+.about__info {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: var(--mb-2-5);
+}
+.about__info-title {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+}
+.about__info-name {
+  font-size: var(--small-font-size);
+}
+.about__info-title,
+.about__info-name {
+  display: block;
+  text-align: center;
+}
+.about__buttons {
+  display: flex;
+  justify-content: center;
+}
 
 /*==================== SKILLS ====================*/
-
-
+.skills__container {
+  row-gap: 0;
+}
+.skills__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-2-5);
+  cursor: pointer;
+}
+.skills__icon,
+.skills__arrow {
+  font-size: 2rem;
+  color: var(--first-color);
+}
 /*==================== QUALIFICATION ====================*/
 
 
