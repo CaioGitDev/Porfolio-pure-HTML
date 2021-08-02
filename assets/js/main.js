@@ -1,18 +1,99 @@
 // SEEDS
-const seedQuaficationsList= [
-  {
-    title: "Profissional Técnico de Multimédia",
-    subtitle: "Portugal - Salvaterra de Magos",
-    date: "2012 - 2014",
-    type: "education",
-  },
-  {
-    title: "Diploma Técnico grau 5 -Técnico Profissional de Sistemas de Informação",
-    subtitle: "Portugal - Santarem",
-    date: "2015 - 2017",
-    type: "education",
-  },
-]
+
+
+const qualificationTemplateLeft = () => {
+  return {
+    "<>": "div", "class": "qualification__data", "html": [
+      {
+        "<>": "div", "html": [
+          { "<>": "h3", "class": "qualification__title", "html": "${title}" },
+          { "<>": "span", "class": "qualification__subtitle", "html": "${subtitle}" },
+          {
+            "<>": "div", "class": "qualification__calendar", "html": [
+              { "<>": "i", "class": "uil uil-calendar-alt", "html": "" },
+              { "<>": "span", "html": "${calendar}" }
+            ]
+          }
+        ]
+      },
+      {
+        "<>": "div", "html": [
+          { "<>": "span", "class": "qualification__rounder", "html": "" },
+          { "<>": "span", "class": "qualification__line", "html": "" }
+        ]
+      }
+    ]
+  }
+}
+
+const qualificationTemplateRight = () => {
+  return {
+    "<>": "div", "class": "qualification__data", "html": [
+      { "<>": "div", "html": "" },
+      {
+        "<>": "div", "html": [
+          { "<>": "span", "class": "qualification__rounder", "html": "" },
+          { "<>": "span", "class": "qualification__line", "html": "" }
+        ]
+      },
+      {
+        "<>": "div", "html": [
+          { "<>": "h3", "class": "qualification__title", "html": "${title}\n                " },
+          { "<>": "span", "class": "qualification__subtitle", "html": "${subtitle}" },
+          {
+            "<>": "div", "class": "qualification__calendar", "html": [
+              { "<>": "i", "class": "uil uil-calendar-alt", "html": "" },
+              { "<>": "span", "html": "${calendar}" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const setQualificationsLists = () => {
+  let educationData = "";
+  let workData = [];
+  let educationContent = document.getElementById("educationContent")
+  let workContent = document.getElementById("workContent")
+
+  //define the position of qualification true=left false = right
+  let dataPositionEducation = true;
+  let dataPositionWork = true;
+  const buildQualificationContent = (position, qualification) => {
+    if (position) {
+      return json2html.render(qualification, qualificationTemplateLeft())
+    } else {
+      return json2html.render(qualification, qualificationTemplateRight())
+    }
+  }
+  const removeClassLastChild = element => {
+    element.querySelectorAll("div span")[1].classList.remove("qualification__line")
+    element.querySelectorAll("div span")[3].classList.remove("qualification__line")
+  }
+  seedQuaficationsList.forEach(qualification => {
+    switch (qualification.type) {
+      case "education":
+        educationData += buildQualificationContent(dataPositionEducation, qualification)
+        dataPositionEducation = (dataPositionEducation) ? false : true;
+        break;
+      case "work":
+        workData += buildQualificationContent(dataPositionWork, qualification)
+        dataPositionWork = (dataPositionWork) ? false : true;
+        break;
+      default:
+        break;
+    }
+
+  })
+  educationContent.innerHTML = educationData
+  workContent.innerHTML = workData
+  let educationLastChild = educationContent.lastChild
+  let workLastChild = workContent.lastChild
+  removeClassLastChild(educationLastChild)
+  removeClassLastChild(workLastChild)
+}
 
 import('../components/reusable-functions.js').then(({ getElementById,
   getAllElementsByClass,
@@ -78,8 +159,8 @@ import('../components/reusable-functions.js').then(({ getElementById,
 
   // ############ QUALIFICATIONS TABS ###########################
   const tabs = getSelectorAll('[data-target]'),
-  tabContents = getSelectorAll('[data-content]'),
-  qualificationActiveClass = 'qualification__active'
+    tabContents = getSelectorAll('[data-content]'),
+    qualificationActiveClass = 'qualification__active'
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -97,8 +178,8 @@ import('../components/reusable-functions.js').then(({ getElementById,
     })
   })
 
-  // ############ MENU SHOW / HIDE ###########################
-
+  // ############ qualification set lists ###########################
+  setQualificationsLists();
 
 
 });
