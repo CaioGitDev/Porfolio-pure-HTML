@@ -1,3 +1,5 @@
+
+// ################## QUALIFICATIONS ################## 
 const seedQuaficationsList = [
   {
     title: "Profissional Técnico de Multimédia",
@@ -47,4 +49,36 @@ const seedQuaficationsList = [
     calendar: "2019 - 2021",
     type: "work",
   },
+]
+
+// ################## SERVICES ################## 
+const seedServicesList = [
+  {
+    title: "Ui/Ux <br> Designer",
+    items: [
+      "I develop the user interface.",
+      "Web page development",
+      "Ux elements interactions.",
+      "Position your company brand."
+    ]
+  },
+  {
+    title: "Frontend <br> Developer",
+    items: [
+      "I develop the user interface.",
+      "Web page development",
+      "Ux elements interactions.",
+      "Position your company brand."
+    ]
+  },
+  {
+    title: "Backend <br> Development",
+    items: [
+      "I develop the user interface.",
+      "Web page development",
+      "Ux elements interactions.",
+      "Position your company brand."
+    ]
+  },
+  
 ]
