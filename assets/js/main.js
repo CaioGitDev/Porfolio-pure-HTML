@@ -198,7 +198,6 @@ import('../components/reusable-functions.js').then(({ getElementById,
   })
 
   modalCloses.forEach((modalClose) => {
-    console.log(modalClose)
     modalClose.addEventListener('click', () => {
       modalViews.forEach((modalView) => {
         modalView.classList.remove('active-modal')
