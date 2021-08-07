@@ -209,17 +209,18 @@ import('../components/reusable-functions.js').then(({ getElementById,
 
 // PORTFOLIO SWIPER
 
-let swiper = new Swiper('.portfolio-container', {
+let swiper = new Swiper('.portifolio__container', {
   cssMode: true,
+  loop: true,
+
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev'
   },
   pagination: {
-    el: '.swiper-pagination'
+    el: '.swiper-pagination',
+    clickable: true,
   },
-  mousewheel: true,
-  keyboard: true,
 })
 
 
