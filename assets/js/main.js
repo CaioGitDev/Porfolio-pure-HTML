@@ -269,7 +269,7 @@ function scrollActive() {
 window.addEventListener('scroll', scrollActive)
 
 
-// scroll to header
+// add nav bar header box shadow
 function scrollHeader() {
   const nav = document.getElementById('header')
 
@@ -279,3 +279,14 @@ function scrollHeader() {
     nav.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
+
+// show scroll to top
+function scrollToTop() {
+  const scrollTop = document.getElementById('scroll-up')
+
+  if(this.scrollY >= 80)
+    scrollTop.classList.add('show-scroll')
+  else
+  scrollTop.classList.remove('show-scroll')
+}
+window.addEventListener('scroll', scrollToTop)
