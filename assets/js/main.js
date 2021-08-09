@@ -184,10 +184,10 @@ import('../components/reusable-functions.js').then(({ getElementById,
 
   // ############ SERVICES MODAL ###########################
   const modalViews = getSelectorAll('.services__modal'),
-        modalBtns = getSelectorAll('.services__button'),
-        modalCloses = getSelectorAll('.services__modal-close')
+    modalBtns = getSelectorAll('.services__button'),
+    modalCloses = getSelectorAll('.services__modal-close')
 
-  let modal = function(modalClick) {
+  let modal = function (modalClick) {
     modalViews[modalClick].classList.add('active-modal')
   }
 
@@ -255,16 +255,27 @@ function scrollActive() {
       if (elm) {
         elm.classList.add('active-link')
       }
-      
-    }else {
+
+    } else {
       const elm = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
       if (elm) {
         elm.classList.remove('active-link')
       }
-      
+
     }
   })
 }
 
 window.addEventListener('scroll', scrollActive)
 
+
+// scroll to header
+function scrollHeader() {
+  const nav = document.getElementById('header')
+
+  if (this.scrollY >= 80)
+    nav.classList.add('scroll-header')
+  else
+    nav.classList.remove('scroll-header')
+}
+window.addEventListener('scroll', scrollHeader)
